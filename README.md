@@ -234,9 +234,15 @@ public class Views_Home_Index : RazorPage<dynamic>
 
 还原后
 ```
+@{
 WebConfig MyWebConfig = ViewBag.MyWebConfig;
+}
+@{
 vAgentUser LoginAgentUser = ViewBag.LoginAgentUser;
+}
+@{
 IProductService MyProductService = BaseService.MyProductService;
+}
 ViewBag.Title = "平台首页";
 
 @section styles{
@@ -352,14 +358,49 @@ ViewBag.Title = "平台首页";
 <div class="row">
     <div class="col-md-12">
         <div id="owl-demo" class="owl-carousel">
+@{
 IList<vArticle> arts = ((IQueryOver<vArticle>)(object)new DbHelper<vArticle>().GetQueryOver().Where((ICriterion)(object)Expression.Sql(" this_.CategoryId in (select CategoryId from Category where ParentId=141) and this_.ArticleImg!=''"))).Take(20).List();
+}
+@foreach (vArticle art in arts)
+
+{
+                    <div class="item">
+                        <a target="_blank" href="/BaiKe/Detail/@(art.ArticleId)">
+                            <img class="lazyOwl rollerimg" data-src="@MyWebConfig.ImgUrl + (string.IsNullOrWhiteSpace(art.ArticleImg) ? "/images/noimg.jpg" : art.ArticleImg)" />
+                            <div class="title">@art.ArticleTitle</div>
+                        </a>
+                    </div>
+}
         </div>
     </div>
 </div>
 
 <h2 class="margin-bottom-30 margin-top-0">邮轮游记 <a class="h4 pull-right" href="/BaiKe/List/27">查看更多</a></h2>
 <div class="row search-page search-content-3 text-center">
+@{
 IList<vArticle> travelnotes = ((IQueryOver<vArticle>)(object)((QueryOverOrderBuilderBase<IQueryOver<vArticle, vArticle>, vArticle, vArticle>)(object)new DbHelper<vArticle>().GetQueryOver().Where((Expression<Func<vArticle, bool>>)((vArticle o) => o.ArticleState == 2 && o.CategoryId == 27)).OrderBy((Expression<Func<vArticle, object>>)((vArticle o) => o.ArticleId))).Desc).Take(4).List();
+}
+@foreach (vArticle note in travelnotes)
+
+{
+            <a href="/BaiKe/Detail/@(note.ArticleId)">
+                <div class="col-md-3">
+                    <div class="tile-container">
+                        <div class="tile-thumbnail">
+                            <img src="@(MyWebConfig.ImgUrl + (string.IsNullOrWhiteSpace(note.ArticleImg) ? /images/noimg.jpg" : note.ArticleImg))" class="rollerimg">
+                        </div>
+                        <div class="tile-title">
+                            <h4 class="bold" style="height: 24px;">
+                                @note.ArticleTitle
+                            </h4>
+                            <div class="tile-desc">
+                                <p>@note.ArticleIntro</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+}
 </div>
 
 @section scripts{
