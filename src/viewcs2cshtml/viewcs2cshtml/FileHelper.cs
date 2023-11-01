@@ -38,14 +38,19 @@ namespace viewcs2cshtml
                         foreach (var node in nodes)
                         {
                             var nodebody = node.ToString();
-                            if (node.Kind() == SyntaxKind.LocalDeclarationStatement)
+                            switch(node.Kind())
                             {
-                                sb.AppendLine(nodebody);
-                            }
-                            if (node.Kind() == SyntaxKind.ExpressionStatement)
-                            {
-                                sb.Append(ExpressionStatement(nodebody));
-                                //if(nodebody.Contains())
+                                case SyntaxKind.LocalDeclarationStatement:
+                                    sb.AppendLine($"@{{");
+                                    sb.AppendLine(nodebody);
+                                    sb.AppendLine($"}}");
+                                    break;
+                                case SyntaxKind.ForEachStatement:
+                                    sb.Append(ConvertToSectionCode(nodebody));
+                                    break;
+                                case SyntaxKind.ExpressionStatement:
+                                    sb.Append(ExpressionStatement(nodebody));
+                                    break;
                             }
                         }
                         var i = 0;
