@@ -1,0 +1,8 @@
+{
+  "runtimeOptions": {
+    "additionalProbingPaths": [
+      "C:\\Users\\spatxos\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\spatxos\\.nuget\\packages"
+    ]
+  }
+}
