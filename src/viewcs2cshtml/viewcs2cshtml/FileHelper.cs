@@ -23,7 +23,7 @@ namespace viewcs2cshtml
             {
                 var sb = new StringBuilder();
 
-                var code = File.ReadAllText(file).Replace("(RenderAsyncDelegate)async delegate", "=>").Replace("base.ViewBag", "ViewBag");
+                var code = File.ReadAllText(file).Replace("(RenderAsyncDelegate)async delegate", "=>").Replace("base.ViewBag", "ViewBag").Replace("base.Layout", "Layout").Replace("base.Model", "Model");
 
                 SyntaxTree tree = CSharpSyntaxTree.ParseText(code);
 
@@ -38,7 +38,7 @@ namespace viewcs2cshtml
                         foreach (var node in nodes)
                         {
                             var nodebody = node.ToString();
-                            switch(node.Kind())
+                            switch (node.Kind())
                             {
                                 case SyntaxKind.LocalDeclarationStatement:
                                     sb.AppendLine($"@{{");
@@ -46,6 +46,8 @@ namespace viewcs2cshtml
                                     sb.AppendLine($"}}");
                                     break;
                                 case SyntaxKind.ForEachStatement:
+                                case SyntaxKind.IfStatement:
+                                case SyntaxKind.ForStatement:
                                     sb.Append(ConvertToSectionCode(nodebody));
                                     break;
                                 case SyntaxKind.ExpressionStatement:
@@ -60,7 +62,7 @@ namespace viewcs2cshtml
                 Console.WriteLine($"{sb.ToString()}");
 
                 var filepath = file.Split("\\");
-                if (filepath.Length > 0)
+                if (filepath.Length > 0 && filepath.Length > 3)
                 {
                     var filename = filepath[4].Split("_");
                     var newpath = Merge(filepath.Take(filepath.Count() - 1).ToArray(), filename);
@@ -73,27 +75,13 @@ namespace viewcs2cshtml
                         outputFile.Write(sb);
                     }
                 }
-
-                //StreamReader reader = new StreamReader(file);
-
-                ////记录当前是否经过了ExecuteAsync()，因为从ExecuteAsync()才开始读取
-                //bool isSkipExecuteAsync = false;
-                //// 循环读取文件中的每一行
-                //while (!reader.EndOfStream)
-                //{
-                //    // 读取一行
-                //    string? line = reader.ReadLine();
-
-                //    // 处理行
-                //    if (!string.IsNullOrWhiteSpace(line) && (line.Contains("ExecuteAsync()") || isSkipExecuteAsync))
-                //    {
-                //        isSkipExecuteAsync = true;
-                //        ProcessLine(line);
-                //    }
-                //}
-
-                //// 关闭文件
-                //reader.Close();
+                else
+                {
+                    using (StreamWriter outputFile = new StreamWriter(Path.Combine("./", file.Replace(".cs", ".cshtml"))))
+                    {
+                        outputFile.Write(sb);
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -130,15 +118,18 @@ namespace viewcs2cshtml
                                     var block = lambdaBody1.Body as BlockSyntax;
                                     if (block != null)
                                     {
-                                        foreach (var str in block.Statements)
+                                        foreach (var blockinvocation in block.Statements)
                                         {
-                                            if (str.Kind() == SyntaxKind.IfStatement)
+                                            switch (blockinvocation.Kind())
                                             {
-                                                sb.Append(ConvertToSectionCode(str.ToString()));
-                                            }
-                                            else
-                                            {
-                                                sb.Append(AppendStringBuilder(str.ToString()));
+                                                case SyntaxKind.ForEachStatement:
+                                                case SyntaxKind.IfStatement:
+                                                case SyntaxKind.ForStatement:
+                                                    sb.Append(ConvertToSectionCode(blockinvocation.ToString()));
+                                                    break;
+                                                default:
+                                                    sb.Append(AppendStringBuilder(blockinvocation.ToString()));
+                                                    break;
                                             }
                                         }
                                     }
@@ -164,19 +155,24 @@ namespace viewcs2cshtml
 
                 foreach (var invocation in root1.DescendantNodes().OfType<InvocationExpressionSyntax>())
                 {
-                    if (invocation.Kind() == SyntaxKind.IfStatement)
+                    switch (invocation.Kind())
                     {
-                        sb.Append(ConvertToSectionCode(invocation.ToString()));
-                    }
-                    else
-                    {
-                        sb.Append(AppendStringBuilder(invocation.ToString()));
+                        case SyntaxKind.ForEachStatement:
+                        case SyntaxKind.IfStatement:
+                        case SyntaxKind.ForStatement:
+                            sb.Append(ConvertToSectionCode(invocation.ToString()));
+                            break;
+                        default:
+                            sb.Append(AppendStringBuilder(invocation.ToString()));
+                            break;
                     }
                 }
             }
             else
             {
+                sb.AppendLine($"@{{");
                 sb.AppendLine(statementcode);
+                sb.AppendLine($"}}");
             }
             return sb;
         }
@@ -198,10 +194,10 @@ namespace viewcs2cshtml
             {
                 SyntaxTree tree = CSharpSyntaxTree.ParseText(statementcode);
                 var root = (CompilationUnitSyntax)tree.GetRoot();
-                var invocationExpressionSyntax = root.DescendantNodes().OfType<InvocationExpressionSyntax>().FirstOrDefault();
-                if (invocationExpressionSyntax != null)
+
+                if (root.DescendantNodes().OfType<InvocationExpressionSyntax>().FirstOrDefault() != null)
                 {
-                    var argList = invocationExpressionSyntax.ArgumentList.Arguments.Select(o => o.ToString()).ToArray();
+                    var argList = root.DescendantNodes().OfType<InvocationExpressionSyntax>().FirstOrDefault().ArgumentList.Arguments.Select(o => o.ToString()).ToArray();
 
                     if (statementcode.Contains("WriteAttributeValue(") || statementcode.Contains("BeginWriteAttribute("))
                     {
@@ -240,7 +236,7 @@ namespace viewcs2cshtml
                         argList[0] = argList[0].Replace("\"\\r\\n", "\n").Replace("\\r\\n", "\n");
                         argList[0] = argList[0].Replace("\\\"", "\"");
                         argList[0] = argList[0].Replace("\\\"\"", "\"");
-                        statementcode = argList[0].Replace("\");", "").Replace("\\\"", "").Replace("\"\">", "\">");
+                        statementcode = argList[0].Replace("\\\"", "").Replace("\"\">", "\">");//.Replace("\");", "")
                         if (statementcode.LastOrDefault() == '"')
                         {
                             statementcode = statementcode.Substring(0, statementcode.Length - 1);
@@ -272,12 +268,44 @@ namespace viewcs2cshtml
         {
             Regex regex = new Regex("\n");
             string[] lines = regex.Split(code);
-
+            int index_houkuohao = 0;
+            int index_qiandakuohao = 0;
+            int breakindex = 0;
+            for (var i = 0; i < lines.Length; i++)
+            {
+                if (index_houkuohao == 0 && lines[i].Contains(")"))
+                {
+                    index_houkuohao = i;
+                    breakindex++;
+                }
+                if (index_qiandakuohao == 0 && lines[i].Contains("{"))
+                {
+                    index_qiandakuohao = i;
+                    breakindex++;
+                }
+                if (breakindex >= 2)
+                {
+                    break;
+                }
+            }
+            //寻找第一个)和第一个{在第几行
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"@{lines[0]}");
-            sb.AppendLine($"{{");
+            for (var i = 0; i <= index_houkuohao; i++)
+            {
+                if (i == 0)
+                {
+                    sb.Append($"\n@{lines[i]}");
+                    code = code.Replace(lines[i], "DefineSection(\"if\", =>");
+                }
+                else
+                {
+                    sb.Append($"{lines[i]}");
+                    code = code.Replace(lines[i], "");
+                }
+            }
+            sb.Append($"{{\n");
 
-            SyntaxTree tree = CSharpSyntaxTree.ParseText(code.Replace(lines[0], "DefineSection(\"if\", =>"));
+            SyntaxTree tree = CSharpSyntaxTree.ParseText(code);
             var root = (CompilationUnitSyntax)tree.GetRoot();
 
             foreach (var invocation in root.DescendantNodes().OfType<InvocationExpressionSyntax>())
@@ -298,13 +326,16 @@ namespace viewcs2cshtml
                             {
                                 foreach (var str in block.Statements)
                                 {
-                                    if (str.Kind() == SyntaxKind.IfStatement)
+                                    switch (str.Kind())
                                     {
-                                        sb.Append(ConvertToSectionCode(str.ToString()));
-                                    }
-                                    else
-                                    {
-                                        sb.Append(AppendStringBuilder(str.ToString()));
+                                        case SyntaxKind.ForEachStatement:
+                                        case SyntaxKind.IfStatement:
+                                        case SyntaxKind.ForStatement:
+                                            sb.Append(ConvertToSectionCode(str.ToString()));
+                                            break;
+                                        default:
+                                            sb.Append(AppendStringBuilder(str.ToString()));
+                                            break;
                                     }
                                 }
                             }

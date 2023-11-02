@@ -994,7 +994,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\spatxos\\.nuget\\packages\\": {}
+    "C:\\Users\\spatxos\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -1005,6 +1006,9 @@
       "packagesPath": "C:\\Users\\spatxos\\.nuget\\packages\\",
       "outputPath": "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml\\viewcs2cshtml\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
         "C:\\Users\\spatxos\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
