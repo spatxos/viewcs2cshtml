@@ -1,0 +1,13 @@
+F:\Project\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\viewcs2cshtml.Core.csproj.AssemblyReference.cache
+F:\Project\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\viewcs2cshtml.Core.GeneratedMSBuildEditorConfig.editorconfig
+F:\Project\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\viewcs2cshtml.Core.AssemblyInfoInputs.cache
+F:\Project\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\viewcs2cshtml.Core.AssemblyInfo.cs
+F:\Project\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\viewcs2cshtml.Core.csproj.CoreCompileInputs.cache
+F:\Project\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\viewcs2cshtml.Core.sourcelink.json
+F:\Project\viewcs2cshtml\src\viewcs2cshtml.Core\bin\Debug\net8.0\viewcs2cshtml.Core.deps.json
+F:\Project\viewcs2cshtml\src\viewcs2cshtml.Core\bin\Debug\net8.0\viewcs2cshtml.Core.dll
+F:\Project\viewcs2cshtml\src\viewcs2cshtml.Core\bin\Debug\net8.0\viewcs2cshtml.Core.pdb
+F:\Project\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\viewcs2cshtml.Core.dll
+F:\Project\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\refint\viewcs2cshtml.Core.dll
+F:\Project\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\viewcs2cshtml.Core.pdb
+F:\Project\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\ref\viewcs2cshtml.Core.dll

@@ -1,0 +1,111 @@
+@{
+Layout = null;
+}
+@{
+_ = (WebConfig)ViewBag.MyWebConfig;
+}
+@{
+vAgentUser LoginAgentUser = ViewBag.LoginAgentUser;
+}
+@{
+_ = BaseService.MyProductService;
+}
+@{
+IAgentUserService MyAgentUserService = BaseService.MyAgentUserService;
+}
+
+    <div class="portlet-title">
+        <div class="caption caption-md">
+            <i class="fa fa-search font-green"></i>
+            <span class="caption-subject font-green bold uppercase">搜索</span>
+        </div>
+    </div>
+    <div class="portlet-body">
+
+@if(!MyAgentUserService.CheckUserPower(LoginAgentUser, AgentEnum.UserRoleGroup.客服))
+{
+
+@ _taghelper 
+{
+
+@ _taghelper 
+{
+
+}
+
+@if(!__tagHelperExecutionContext.Output.IsContentModified)
+{
+
+}
+
+@foreach (KeyValuePair<string, string> type in EnumHelper<OrderEnum.MoneyTypeCategory>.GetDict())
+				{
+
+}
+
+@ _taghelper 
+{
+
+}
+
+@if(!__tagHelperExecutionContext.Output.IsContentModified)
+{
+
+}
+
+@foreach (vShip ship in BaseService.MyShipService.GetPublicProductShips())
+				{
+
+}
+
+}
+
+@ _taghelper 
+{
+
+}
+
+@ _taghelper 
+{
+
+}
+
+@if(!__tagHelperExecutionContext.Output.IsContentModified)
+{
+
+}
+
+}
+
+@if(!__tagHelperExecutionContext.Output.IsContentModified)
+{
+
+}
+
+@if(!__tagHelperExecutionContext.Output.IsContentModified)
+{
+
+}
+
+@if(!__tagHelperExecutionContext.Output.IsContentModified)
+{
+
+}
+
+@if(!__tagHelperExecutionContext.Output.IsContentModified)
+{
+
+}
+
+@if(!__tagHelperExecutionContext.Output.IsContentModified)
+{
+
+}
+
+@if(!__tagHelperExecutionContext.Output.IsContentModified)
+{
+
+}
+    </div>
+
+

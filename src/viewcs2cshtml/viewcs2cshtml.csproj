@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="viewcs\Areas_Pay_Views_Paid_LeftMenu.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="TestWebApplication.Views.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="viewcs\Areas_Pay_Views_Paid_LeftMenu.cs">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.7.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\viewcs2cshtml.Core\viewcs2cshtml.Core.csproj" />
+	</ItemGroup>
+</Project>
