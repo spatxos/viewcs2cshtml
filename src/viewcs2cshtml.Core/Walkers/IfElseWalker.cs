@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using viewcs2cshtml.Core.Tools;
 
 namespace viewcs2cshtml.Core.Walkers
 {
@@ -22,18 +23,6 @@ namespace viewcs2cshtml.Core.Walkers
         {
             // Process the If part
             Console.WriteLine(node.Condition);
-
-            if (node.Statement is BlockSyntax block)
-            {
-                var elsestr = "";
-                if (node.Parent.Kind() == SyntaxKind.ElseClause)
-                {
-                    elsestr = "else ";
-                }
-                // Process the If block
-                Console.WriteLine(block);
-                sbCode.Append(FileHelper.ConvertToSectionCode("DefineSection(\"if\", =>" + block.ToString(), $"{elsestr}if({node.Condition.ToString()})\n"));
-            }
 
             if (node.Else != null)
             {
@@ -60,11 +49,22 @@ namespace viewcs2cshtml.Core.Walkers
                 {
                     var guid = Guid.NewGuid().ToString();
                     //sbCode.Append(FileHelper.ConvertToSectionCode(node.ToString().Replace("else", $"if(\"{guid}\".Equals(\"{guid}\"))")).Replace($"@if(\"{guid}\".Equals(\"{guid}\"))", "else"));
-                    sbCode.Append(FileHelper.ConvertToSectionCode("DefineSection(\"if\", =>" + elseBlock.ToString(), "else \n"));
+                    sbCode.Append(StatementCodeTransformHelper.ConvertToSectionCode("DefineSection(\"if\", =>" + elseBlock.ToString(), "else \n"));
 
                     // 处理 else 部分
                     Console.WriteLine($"ELSE Part: {elseClause.Statement}");
                 }
+            }
+            else if (node.Statement is BlockSyntax block)
+            {
+                var elsestr = "";
+                if (node.Parent.Kind() == SyntaxKind.ElseClause)
+                {
+                    elsestr = "else ";
+                }
+                // Process the If block
+                Console.WriteLine(block);
+                sbCode.Append(StatementCodeTransformHelper.ConvertToSectionCode("DefineSection(\"if\", =>" + block.ToString(), $"{elsestr}if({node.Condition.ToString()})\n"));
             }
             else
             {
@@ -76,7 +76,7 @@ namespace viewcs2cshtml.Core.Walkers
             }
 
             sbCode = sbCode.Replace("@else if", " else if ").Replace("@else", " else ");
-            base.VisitIfStatement(node);
+            //base.VisitIfStatement(node);
         }
 
         //public override void VisitElseClause(ElseClauseSyntax node)

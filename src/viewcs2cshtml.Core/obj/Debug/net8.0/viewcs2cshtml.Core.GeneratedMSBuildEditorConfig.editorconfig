@@ -16,6 +16,6 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = viewcs2cshtml.Core
-build_property.ProjectDir = F:\Project\viewcs2cshtml\src\viewcs2cshtml.Core\
+build_property.ProjectDir = D:\Project\github\viewcs2cshtml\src\viewcs2cshtml.Core\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

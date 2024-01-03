@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using viewcs2cshtml.Core.Tools;
 
 namespace viewcs2cshtml.Core.Walkers
 {
@@ -39,7 +40,7 @@ namespace viewcs2cshtml.Core.Walkers
                                "\n})\n";
                     var newblockStr = "DefineSection(\"if\", =>" +
                                         body;
-                    sbCode.Append(FileHelper.ConvertToSectionCode(newblockStr, label, "").Replace($"@{label}", $"{label}\n"));
+                    sbCode.Append(StatementCodeTransformHelper.ConvertToSectionCode(newblockStr, label, "").Replace($"@{label}", $"{label}\n"));
                 }
                 else
                 {

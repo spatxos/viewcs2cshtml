@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("viewcs2cshtml.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d11d1701f529914a1ededf0dd73b822e40bc5ac6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9cf076462e6defa4eb962b8670262d008eed6abe")]
 [assembly: System.Reflection.AssemblyProductAttribute("viewcs2cshtml.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("viewcs2cshtml.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using viewcs2cshtml.Core.Tools;
 
 namespace viewcs2cshtml.Core.Walkers
 {
@@ -22,7 +23,7 @@ namespace viewcs2cshtml.Core.Walkers
             if (node.Statement.Kind() == SyntaxKind.Block)
             {
                 var newblockStr = "DefineSection(\"if\", =>" + node.Statement.ToString();
-                sbCode.Append(FileHelper.ConvertToSectionCode(newblockStr, foreachBodyStr));
+                sbCode.Append(StatementCodeTransformHelper.ConvertToSectionCode(newblockStr, foreachBodyStr));
             }
             Console.WriteLine($"Foreach Part: {node}");
 

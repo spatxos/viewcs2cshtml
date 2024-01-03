@@ -11,3 +11,16 @@ F:\Project\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\viewcs2cshtml.C
 F:\Project\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\refint\viewcs2cshtml.Core.dll
 F:\Project\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\viewcs2cshtml.Core.pdb
 F:\Project\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\ref\viewcs2cshtml.Core.dll
+D:\Project\github\viewcs2cshtml\src\viewcs2cshtml.Core\bin\Debug\net8.0\viewcs2cshtml.Core.deps.json
+D:\Project\github\viewcs2cshtml\src\viewcs2cshtml.Core\bin\Debug\net8.0\viewcs2cshtml.Core.dll
+D:\Project\github\viewcs2cshtml\src\viewcs2cshtml.Core\bin\Debug\net8.0\viewcs2cshtml.Core.pdb
+D:\Project\github\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\viewcs2cshtml.Core.csproj.AssemblyReference.cache
+D:\Project\github\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\viewcs2cshtml.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Project\github\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\viewcs2cshtml.Core.AssemblyInfoInputs.cache
+D:\Project\github\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\viewcs2cshtml.Core.AssemblyInfo.cs
+D:\Project\github\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\viewcs2cshtml.Core.csproj.CoreCompileInputs.cache
+D:\Project\github\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\viewcs2cshtml.Core.sourcelink.json
+D:\Project\github\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\viewcs2cshtml.Core.dll
+D:\Project\github\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\refint\viewcs2cshtml.Core.dll
+D:\Project\github\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\viewcs2cshtml.Core.pdb
+D:\Project\github\viewcs2cshtml\src\viewcs2cshtml.Core\obj\Debug\net8.0\ref\viewcs2cshtml.Core.dll

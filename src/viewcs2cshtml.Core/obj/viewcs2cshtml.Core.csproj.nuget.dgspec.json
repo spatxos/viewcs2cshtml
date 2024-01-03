@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj": {}
+    "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj": {}
   },
   "projects": {
-    "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj": {
+    "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj",
+        "projectUniqueName": "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj",
         "projectName": "viewcs2cshtml.Core",
-        "projectPath": "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj",
-        "packagesPath": "C:\\Users\\spatxos\\.nuget\\packages\\",
-        "outputPath": "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\obj\\",
+        "projectPath": "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj",
+        "packagesPath": "C:\\Users\\wangp\\.nuget\\packages\\",
+        "outputPath": "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\spatxos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wangp\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -43,6 +40,10 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "Microsoft.AspNetCore.Razor.Runtime": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
             "Microsoft.CodeAnalysis.CSharp": {
               "target": "Package",
               "version": "[4.7.0, )"
