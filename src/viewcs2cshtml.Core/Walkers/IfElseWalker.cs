@@ -23,7 +23,17 @@ namespace viewcs2cshtml.Core.Walkers
         {
             // Process the If part
             Console.WriteLine(node.Condition);
-
+            if (node.Statement is BlockSyntax block)
+            {
+                var elsestr = "";
+                if (node.Parent.Kind() == SyntaxKind.ElseClause)
+                {
+                    elsestr = "else ";
+                }
+                // Process the If block
+                Console.WriteLine(block);
+                sbCode.Append(StatementCodeTransformHelper.ConvertToSectionCode("DefineSection(\"if\", =>" + block.ToString(), $"{elsestr}if({node.Condition.ToString()})\n"));
+            }
             if (node.Else != null)
             {
                 // 如果有 else 部分
@@ -36,7 +46,7 @@ namespace viewcs2cshtml.Core.Walkers
                         Console.WriteLine(elseIfBlock);
                         //sbCode.Append(FileHelper.ConvertToSectionCode("DefineSection(\"if\", =>" + elseIfBlock.ToString(), $"else if({elseIf.Condition})\n"));
                     }
-                    //sbCode.Append(FileHelper.ConvertToSectionCode(elseIf.Statement.Parent.ToString(), " else " + elseIf.ToString().Replace(elseIf.Statement.ToString(), "")));
+                    sbCode.Append(StatementCodeTransformHelper.ConvertToSectionCode(elseIf.Statement.Parent.ToString(), " else " + elseIf.ToString().Replace(elseIf.Statement.ToString(), "")));
                     // 处理 else if 部分
                     Console.WriteLine($"ELSE IF Part: {elseIf.Statement}");
                     //if(elseIf.Statement.Parent.ToString().Contains("else if"))
@@ -55,17 +65,6 @@ namespace viewcs2cshtml.Core.Walkers
                     Console.WriteLine($"ELSE Part: {elseClause.Statement}");
                 }
             }
-            else if (node.Statement is BlockSyntax block)
-            {
-                var elsestr = "";
-                if (node.Parent.Kind() == SyntaxKind.ElseClause)
-                {
-                    elsestr = "else ";
-                }
-                // Process the If block
-                Console.WriteLine(block);
-                sbCode.Append(StatementCodeTransformHelper.ConvertToSectionCode("DefineSection(\"if\", =>" + block.ToString(), $"{elsestr}if({node.Condition.ToString()})\n"));
-            }
             else
             {
                 // 处理 if 部分
@@ -76,7 +75,7 @@ namespace viewcs2cshtml.Core.Walkers
             }
 
             sbCode = sbCode.Replace("@else if", " else if ").Replace("@else", " else ");
-            //base.VisitIfStatement(node);
+            base.VisitIfStatement(node);
         }
 
         //public override void VisitElseClause(ElseClauseSyntax node)

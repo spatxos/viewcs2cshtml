@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml\\viewcs2cshtml.csproj": {}
+    "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml\\viewcs2cshtml.csproj": {}
   },
   "projects": {
-    "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj": {
+    "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj",
+        "projectUniqueName": "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj",
         "projectName": "viewcs2cshtml.Core",
-        "projectPath": "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj",
-        "packagesPath": "C:\\Users\\wangp\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\obj\\",
+        "projectPath": "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj",
+        "packagesPath": "C:\\Users\\spatxos\\.nuget\\packages\\",
+        "outputPath": "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\wangp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\spatxos\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -69,17 +72,20 @@
         }
       }
     },
-    "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml\\viewcs2cshtml.csproj": {
+    "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml\\viewcs2cshtml.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml\\viewcs2cshtml.csproj",
+        "projectUniqueName": "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml\\viewcs2cshtml.csproj",
         "projectName": "viewcs2cshtml",
-        "projectPath": "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml\\viewcs2cshtml.csproj",
-        "packagesPath": "C:\\Users\\wangp\\.nuget\\packages\\",
-        "outputPath": "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml\\obj\\",
+        "projectPath": "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml\\viewcs2cshtml.csproj",
+        "packagesPath": "C:\\Users\\spatxos\\.nuget\\packages\\",
+        "outputPath": "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\wangp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\spatxos\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -93,8 +99,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj": {
-                "projectPath": "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj"
+              "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj": {
+                "projectPath": "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj"
               }
             }
           }
@@ -112,6 +118,10 @@
             "Microsoft.CodeAnalysis.CSharp": {
               "target": "Package",
               "version": "[4.7.0, )"
+            },
+            "System.Management": {
+              "target": "Package",
+              "version": "[8.0.0, )"
             }
           },
           "imports": [

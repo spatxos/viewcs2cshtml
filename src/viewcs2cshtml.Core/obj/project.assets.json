@@ -1112,19 +1112,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\wangp\\.nuget\\packages\\": {}
+    "C:\\Users\\spatxos\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj",
+      "projectUniqueName": "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj",
       "projectName": "viewcs2cshtml.Core",
-      "projectPath": "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj",
-      "packagesPath": "C:\\Users\\wangp\\.nuget\\packages\\",
-      "outputPath": "D:\\Project\\github\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\obj\\",
+      "projectPath": "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\viewcs2cshtml.Core.csproj",
+      "packagesPath": "C:\\Users\\spatxos\\.nuget\\packages\\",
+      "outputPath": "F:\\Project\\viewcs2cshtml\\src\\viewcs2cshtml.Core\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\wangp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\spatxos\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
