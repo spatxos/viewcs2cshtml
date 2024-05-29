@@ -25,6 +25,8 @@ namespace viewcs2cshtml.Core
         {
             try
             {
+                TagHelperContextDic.Clear();
+
                 var sb = new StringBuilder();
 
                 var code = File.ReadAllText(file).Replace("(RenderAsyncDelegate)async delegate", "=>").Replace("base.ViewBag", "ViewBag").Replace("base.Layout", "Layout").Replace("base.Model", "Model");
